@@ -1,8 +1,10 @@
-import Image from 'next/image'
+"use client";
+import NigeriaTours from "../pages/nigeria-tours";
 
 export default function Home() {
   return (
-    <main>
-    </main>
-  )
+    <div>
+      <NigeriaTours />
+    </div>
+  );
 }
