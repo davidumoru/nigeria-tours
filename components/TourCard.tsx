@@ -47,7 +47,7 @@ const TourCard: React.FC<TourCardProps> = ({
       <div className="flex flex-col">
         <button
           onClick={handleNotInterested}
-          className="text-green-500 hover:underline focus:outline-none border border-green-500 mt-2 px-4 py-1 rounded-md"
+          className="text-green-500 hover:bg-green-500 hover:text-white focus:outline-none border border-green-500 mt-2 px-4 py-1 rounded-md"
         >
           Not Interested
         </button>
