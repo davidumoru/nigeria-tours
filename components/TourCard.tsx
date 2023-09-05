@@ -30,7 +30,7 @@ const TourCard: React.FC<TourCardProps> = ({
     : description.slice(0, 100); // Display the first 100 characters initially
 
   return (
-    <div className="border border-gray-200 p-4 rounded-lg shadow-md mb-4">
+    <div className="p-4 rounded-lg shadow-md mb-4 max-w-[30rem] bg-zinc-800">
       <img src={image} alt={name} className="mb-2" />
       <div className="flex justify-between items-center mb-2">
         <span className="text-xl font-semibold">{name}</span>
@@ -40,14 +40,14 @@ const TourCard: React.FC<TourCardProps> = ({
 
       <button
         onClick={toggleDescription}
-        className="text-blue-500 hover:underline focus:outline-none"
+        className="text-green-200 hover:underline focus:outline-none"
       >
         {showDescription ? "Show Less" : "Read More"}
       </button>
       <div className="flex flex-col">
         <button
           onClick={handleNotInterested}
-          className="text-red-500 hover:underline focus:outline-none border border-red-500 mt-2 px-4 py-1 rounded-md"
+          className="text-green-500 hover:underline focus:outline-none border border-green-500 mt-2 px-4 py-1 rounded-md"
         >
           Not Interested
         </button>
