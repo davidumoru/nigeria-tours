@@ -5,9 +5,10 @@ interface TourCardProps {
   price: string;
   name: string;
   description: string;
+  onRemove: () => void;
 }
 
-const TourCard: React.FC<TourCardProps> = ({ image, price, name, description }) => {
+const TourCard: React.FC<TourCardProps> = ({ image, price, name, description, onRemove }) => {
   const [showDescription, setShowDescription] = useState(false);
 
   const toggleDescription = () => {
@@ -15,7 +16,7 @@ const TourCard: React.FC<TourCardProps> = ({ image, price, name, description }) 
   };
 
   const handleNotInterested = () => {
-    
+    onRemove();
   };
 
   return (

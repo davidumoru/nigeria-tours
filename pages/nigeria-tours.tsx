@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import TourCard from "../components/TourCard";
 
 const NigeriaTours: React.FC = () => {
-  const tours = [
+  const [tours, setTours] = useState([
     {
       image: "/tour1.jpg",
       price: "$100",
@@ -51,14 +51,18 @@ const NigeriaTours: React.FC = () => {
       name: "Tour 8",
       description: "Description for Tour 8...",
     },
-  ];
+  ]);
+
+  const handleRemoveTour = (index: number) => {
+    setTours((prevTours) => prevTours.filter((_, i) => i !== index));
+  };
 
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-4">Nigeria Tours</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {tours.map((tour, index) => (
-          <TourCard key={index} {...tour} />
+          <TourCard key={index} {...tour} onRemove={() => handleRemoveTour(index)} />
         ))}
       </div>
     </div>
