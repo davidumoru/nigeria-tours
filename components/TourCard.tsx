@@ -30,11 +30,13 @@ const TourCard: React.FC<TourCardProps> = ({
     : description.slice(0, 100); // Display the first 100 characters initially
 
   return (
-    <div className="p-4 rounded-lg shadow-md mb-4 max-w-[30rem] bg-zinc-800">
+    <div className="relative p-4 rounded-lg shadow-md mb-4 max-w-[30rem] bg-zinc-800">
+      <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 z-10">
+        {price}
+      </div>
       <img src={image} alt={name} className="mb-2" />
       <div className="flex justify-between items-center mb-2">
         <span className="text-xl font-semibold">{name}</span>
-        <span className="text-gray-500">{price}</span>
       </div>
       <p className="mb-2">{displayDescription}</p>
 
