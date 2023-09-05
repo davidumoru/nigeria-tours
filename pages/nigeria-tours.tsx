@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import TourCard from "../components/TourCard";
+import React, { useState } from 'react';
+import TourCard from '../components/TourCard';
 
-const NigeriaTours: React.FC = () => {
-  const [tours, setTours] = useState([
-    {
+const initialTours = [    {
       image: "/Olumo-Rock.jpeg",
       price: "$100",
       name: "Olumo Rock ( Ogun State )",
@@ -51,20 +49,43 @@ const NigeriaTours: React.FC = () => {
       name: "Eleko Beach ( Lagos State )",
       description: "As you can expect, fun lovers enjoy a visit to the beach on the weekends. If you are looking for a quiet and reflective time at the beach, you should visit Eleko Beach on a weekday. Even though more people troupe into Eleko Beach on weekends, it generally doesn?t get as crowded as the other popular public beaches in Lagos like Elegushi Beach, Bar Beach, and Alpha Beach. Also, the huts at Eleko Beach make you people like you?re having your own private beach experience. This means, in reality, any day of a week is a good day to visit this beach.",
     },
-  ]);
+  ];
+
+const NigeriaTours: React.FC = () => {
+  const [tours, setTours] = useState(initialTours);
 
   const handleRemoveTour = (index: number) => {
     setTours((prevTours) => prevTours.filter((_, i) => i !== index));
   };
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-semibold my-10 text-center">Nigeria Tours</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-10 md:mx-32">
-        {tours.map((tour, index) => (
-          <TourCard key={index} {...tour} onRemove={() => handleRemoveTour(index)} />
-        ))}
-      </div>
+      {tours.length === 0 ? (
+        <div className="text-center">
+          <p>No cards left</p>
+          <button
+            onClick={refreshPage}
+            className="bg-green-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-green-600 focus:outline-none"
+          >
+            Refresh
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-10 md:mx-32">
+          {tours.map((tour, index) => (
+            <TourCard
+              key={index}
+              {...tour}
+              onRemove={() => handleRemoveTour(index)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
